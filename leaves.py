@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# This is a demo coming from <Python Scientific Programming>
+# This is a demo taken from <Python Scientific Programming>
 import numpy as np
 import matplotlib.pyplot as pl
 import time
