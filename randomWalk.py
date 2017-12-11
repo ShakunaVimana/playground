@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 y0 = 0
 yj = []
-for i in range(1000):
+for i in range(10000):
  y = random.choice([-1,1])
  y0 = y0+y
  yj.append(y0)
