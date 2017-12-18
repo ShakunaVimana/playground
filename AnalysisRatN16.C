@@ -48,7 +48,6 @@ void AnalysisRatN16()
   
   double posX, posY, posZ, posRad, time, energy, ITR, beta14, dirX, dirY, dirZ, nhits, sunDirX, sunDirY, sunDirZ, cosThetaToSun, itr, iso, thij;
   double posTheta, posPhi;
-  double tRes;
   UInt_t day, sec, runNumber, eventGTID, fecd;
   double nsecs;
   std::vector<double>* vtRes;
@@ -76,7 +75,7 @@ void AnalysisRatN16()
   tree->Branch("day",&day,"day/i");
   tree->Branch("sec",&sec,"sec/i");
   tree->Branch("fecd",&fecd,"fecd/i");
-  tree->Branch("nsecs",&nsecs,"nsecs/D"); 
+  tree->Branch("nsecs",&nsecs,"nsecs/D");
   tree->Branch("itr",&itr,"itr/D");
   tree->Branch("beta14",&iso,"iso/D");
   tree->Branch("theta_ij",&thij,"thij/D");
@@ -88,7 +87,7 @@ void AnalysisRatN16()
   while(in0>>filenames){
    cout<<" filenames "<<filenames<<endl ;
     // Load the RAT file
-    RAT::DU::DSReader dsReader( filenames);
+    RAT::DU::DSReader dsReader(filenames);
     
     // To later get the run info
     const RAT::DS::Run& run = dsReader.GetRun();
@@ -115,8 +114,8 @@ void AnalysisRatN16()
 	
     	// Looping over triggered events in each ds
 	if (iEVCount) {
-    	  for(size_t iEV=0; iEV<iEVCount; iEV++) //iEVCount
-	  {
+    	 for(size_t iEV=0; iEV<iEVCount; iEV++) //iEVCount
+         {
 	      // Get the event
 	      const RAT::DS::EV& ev = rDS.GetEV(iEV);
               const RAT::DS::CalPMTs& calpmts = ev.GetCalPMTs();
@@ -143,6 +142,12 @@ void AnalysisRatN16()
 		  bool directionFlag = false;
 		  TVector3 u_fit;
 		  const string fitName = "waterFitter";
+
+                  for(unsigned int ipmt=0;ipmt<calpmts.GetFECDCount();ipmt++)//do FECD cuts
+                  {
+                    fecd = calpmts.GetFECDPMT(ipmt).GetID();
+                  }
+
 		  if(((TriggerType&2)==2))// || ((TriggerType&18)==18))
 		  {
 		    if( ev.FitResultExists(fitName) ) {  // It needs to exist 
@@ -184,11 +189,6 @@ void AnalysisRatN16()
 			  if(fResult.GetValid()) { //cout<< " Fit is Valid "<<endl ;
 			    energy= fResult.GetVertex(0).GetEnergy(); }
 			}
-			
-                        for(unsigned int ipmt=0;ipmt<calpmts.GetFECDCount();ipmt++)//do FECD cuts
-                        {
-                           fecd = calpmts.GetFECDPMT(ipmt).GetID();
-                        }
 
                         //Calculate time residue
 		        if( ev.GetFitResult(fitName).GetVertex(0).ContainsPosition() ) { // Needs to contain position
@@ -256,7 +256,9 @@ void AnalysisRatN16()
   nHit_toSun_radius->SetZTitle( "Radius [mm]" );
   
   // Write the histograms to fileName
-  TFile *file=new TFile("RatProcess_N16_100941.root","RECREATE");
+  TString newname = "RatProcess_";
+  TString processname = newname+filenames; 
+  TFile *file=new TFile(processname,"RECREATE");
   file->cd();
   tree->Write();
   radius->Write();
