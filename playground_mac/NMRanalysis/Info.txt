@@ -1,0 +1,43 @@
+
+  *******************************************
+  *                                         *
+  *        W E L C O M E  to  R O O T       *
+  *                                         *
+  *   Version   5.34/36      5 April 2016   *
+  *                                         *
+  *  You are welcome to visit our Web site  *
+  *          http://root.cern.ch            *
+  *                                         *
+  *******************************************
+
+ROOT 5.34/36 (v5-34-36@v5-34-36, Apr 05 2016, 10:25:45 on macosx64)
+
+CINT/ROOT C/C++ Interpreter version 5.18.00, July 2, 2010
+Type ? for help. Commands must be C++ statements.
+Enclose multiple statements between { }.
+RAT: Libraries loaded.
+
+Processing peaks.C...
+496
+Found 5 candidate peaks to fit
+去除基线前: 
+烷基碳比例: 0.187716 烷氧碳比例: 0.463265 芳香碳比例: 0.125664 羰基碳比例: 0.238613
+去除基线后: 
+烷基碳比例: 0.174028 烷氧碳比例: 0.453659 芳香碳比例: 0.121561 羰基碳比例: 0.225884
+Found 3 useful peaks to fit
+Now fitting: Be patient
+ FCN=1.06438e+11 FROM MIGRAD    STATUS=FAILED        772 CALLS         773 TOTAL
+                     EDM=nan    STRATEGY= 1  ERROR MATRIX UNCERTAINTY 100.0 per cent
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           8.96583e+05   8.42758e+01  -0.00000e+00   1.06498e+01
+   2  p1          -2.67926e+03   4.92052e-01   0.00000e+00  -1.25130e+01
+   3  p2           9.46748e+05   8.08045e+02  -0.00000e+00   1.25606e+01
+   4  p3          1.61491e-314           nan           nan   0.00000e+00
+   5  p4           3.00000e+00   1.41421e+00  -0.00000e+00   2.30150e+06
+   6  p5           9.46748e+05   8.08045e+02  -0.00000e+00   1.25606e+01
+   7  p6           0.00000e+00   1.41421e+00  -0.00000e+00   2.10390e+06
+   8  p7           3.00000e+00   1.41421e+00  -0.00000e+00   2.30150e+06
+   9  p8           9.46748e+05   8.08045e+02  -0.00000e+00   1.25606e+01
+  10  p9           0.00000e+00   1.41421e+00  -0.00000e+00   2.10390e+06
+  11  p10          3.00000e+00   1.41421e+00  -0.00000e+00   2.30150e+06
